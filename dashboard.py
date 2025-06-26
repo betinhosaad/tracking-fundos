@@ -21,7 +21,7 @@ fundos = df.columns.tolist()
 fundo_escolhido = st.selectbox("Selecione o fundo para análise:", fundos)
 
 # Prepara a série de retornos do fundo escolhido
-serie = df[fundo_escolhido].replace("#VALUE!",np.nan).dropna()
+serie = df[fundo_escolhido].replace("#VALUE!",np.nan).dropna().astype(float)
 serie = serie.sort_index()
 serie = serie[~serie.index.duplicated(keep='first')]
 
