@@ -26,7 +26,7 @@ serie = serie[~serie.index.duplicated(keep='first')]
 
 st.subheader(f"Métricas: {fundo_escolhido}")
 
-qs.reports.html(serie, cdi.loc[serie.index], rf=((1+cdi.loc[serie.index]).cumprod()-1)['CDI'][-1],output="meu_relatorio.html",periods_per_year=len(serie.index))
+qs.reports.html(serie, cdi.loc[serie.index], rf=((1+cdi.loc[serie.index]).cumprod()-1)['CDI'][-1],output="relatorio.html",periods_per_year=len(serie.index), title=f"Relatório - {fundo_escolhido}")
 with open("relatorio.html", "r", encoding="utf-8") as f:
     html = f.read()
 st.components.v1.html(html, height=900, scrolling=True)
